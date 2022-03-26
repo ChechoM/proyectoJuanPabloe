@@ -1,0 +1,118 @@
+<div class="row">
+    <div class="col-sm-2 d-flex justify-content-start">
+        <h2 *ngIf="crear" mat-dialog-title>Crear usuario</h2>
+        <h2 *ngIf="actualizar"  mat-dialog-title>Actualizar usuario</h2>
+    </div>
+    <div class="col-sm-10 d-flex justify-content-end">  
+        <button mat-button mat-dialog-close>                    
+            <i class="fa-solid fa-xmark" style="font-size: 20px;"></i>
+        </button>
+    </div>
+</div>
+
+<form (ngSubmit)="enviarDatos()" [formGroup]="formularioClientes">
+    <mat-dialog-content class="mat-typography contenedor">
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Nombre</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">            
+                <mat-form-field   appearance="fill" color="accent">
+                    <mat-label >Nombre</mat-label>
+                    <input formControlName="Nombre" matInput type="text"  placeholder="Ingrese nombre">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2">
+                <strong >Nit</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2 ">            
+                <mat-form-field   appearance="fill" color="accent">
+                    <mat-label >Nit</mat-label>
+                    <input formControlName="Nit" matInput type="text"  placeholder="Ingrese Nit">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2">
+                <strong >Dirección</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2 ">            
+                <mat-form-field   appearance="fill" color="accent">
+                    <mat-label >Dirección</mat-label>
+                    <input formControlName="Direccion" matInput type="text"  placeholder="Ingrese dirección">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 d-inline m-3 mb-2">
+                <strong >Télefono</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2 ">            
+                <mat-form-field   appearance="fill" color="accent">
+                    <mat-label >Télefono</mat-label>
+                    <input formControlName="Telefono" matInput type="number"  placeholder="Ingrese télefono">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 d-inline m-3 mb-2">
+                <strong >Correo electrónico</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2 ">            
+                <mat-form-field   appearance="fill" color="accent">
+                    <mat-label >Correo electrónico</mat-label>
+                    <input formControlName="correoElectronico" matInput type="email"  placeholder="Ingrese correo electrónico">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 d-inline m-3 mb-2">
+                <strong >Nombre responsable</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2 ">            
+                <mat-form-field   appearance="fill" color="accent">
+                    <mat-label >Nombre responsable</mat-label>
+                    <input formControlName="nombreResponsable" matInput type="text"  placeholder="Ingrese nombre responsable">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 d-inline m-3 mb-2">
+                <strong >Correo responsable</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2 ">            
+                <mat-form-field   appearance="fill" color="accent">
+                    <mat-label >Correo responsable</mat-label>
+                    <input formControlName="correoResponsable" matInput type="email"  placeholder="Ingrese correo responsable">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancelar</button>
+        <button type="submit" mat-button [mat-dialog-close]="true" cdkFocusInitial>Guardar</button>        
+    </mat-dialog-actions>
+</form>

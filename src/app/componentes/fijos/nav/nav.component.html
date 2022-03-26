@@ -1,0 +1,20 @@
+
+    
+    <nav class="navbar navbar-dark bg-dark row">        
+            <div class="col-sm-1 ml-5">                
+                <button mat-button color="accent" [matMenuTriggerFor]="menu" class="">Menu</button>
+                <mat-menu #menu="matMenu" class="bg-dark font-weight-bold">
+                <button mat-menu-item class="colortext" (click)="enrutar(1)">Usuarios</button>
+                <button mat-menu-item class="colortext" (click)="enrutar(2)">Cliente</button>
+                <button mat-menu-item class="colortext" (click)="enrutar(3)">Equipos</button>
+                <button mat-menu-item class="colortext" (click)="enrutar(4)">Certificados</button>
+                <button mat-menu-item class="colortext" (click)="enrutar(5)">Reportes</button>
+                </mat-menu>
+            </div>
+            <div class="col-sm-10"> </div>
+            <div class="col-sm-1">
+                <button (click)="enrutar(6)" class="end-0" mat-button color="accent" aria-label="Example icon button with a home icon">
+                    <i class="fa-solid fa-house"></i>
+                  </button>            
+            </div>
+    </nav>
