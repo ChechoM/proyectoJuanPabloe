@@ -28,7 +28,8 @@ export class ClientesComponent  implements OnInit {
     ) {}
 
 
-  ngOnInit(): void{               
+  ngOnInit(): void{   
+                
     this.obtenerLista() 
     setTimeout(() => {          
       this.dataSource.paginator = this.paginator;
