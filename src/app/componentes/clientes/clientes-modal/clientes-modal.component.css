@@ -8,7 +8,7 @@
 }
 
 .contenedor::-webkit-scrollbar:vertical {
-    width:3px;
+    width:7px;
 }
 
 .contenedor::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {

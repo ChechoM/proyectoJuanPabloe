@@ -1,4 +1,5 @@
-export class Clientes{    
+export class Clientes{  
+    Id!: number
     Nombre!: string
     Nit!: string
     Direccion!: string

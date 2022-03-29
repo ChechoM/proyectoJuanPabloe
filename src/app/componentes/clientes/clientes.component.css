@@ -1,3 +1,5 @@
+@import url('https://css.gg/more-vertical-alt.css');
+
 table {
     width: 100%;
   }
@@ -24,6 +26,14 @@ table {
 
 .mat-cell{
   min-width: 200px;
+
+}
+
+.accion{
+  min-width: 10px !important;
+  margin-right: 3px;
+  text-align: center !important;
+  padding-left: 10px !important;
 
 }
 .contenedor-foot-head-table{
@@ -54,9 +64,16 @@ table {
   background-color: #69f0ae;
   border-radius: 20px;
 }
+.menu-table-boton{
+  color: #69f0ae !important;
+  padding: 3px !important;
+}
 
 .table-container::-webkit-scrollbar-track {
   border-radius: 10px;  
 }
 
+mat-form-field input{
+  color: white;
+}
 
