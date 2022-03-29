@@ -18,4 +18,12 @@ API : string = 'http://localhost/proyectoSena/'
     return this.clienthttp.get(this.API+"?listarClientes");
   }
 
+  eliminarCliente(id:number):Observable<any>{
+    return this.clienthttp.get(this.API+"?borrarCliente="+id);
+  }
+
+  actualizarCliente(datosCliente:Clientes):Observable<any>{
+    return this.clienthttp.post(this.API+"?actualizarClientes",datosCliente);
+  }
+
 }
