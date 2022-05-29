@@ -1,12 +1,13 @@
+
 import { Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
-import { ClientesModalComponent } from './clientes-modal/clientes-modal.component';
 import {MatDialog} from '@angular/material/dialog';
 import { CrudService } from 'src/app/servicio/crud.service';
-import { Clientes } from 'src/app/servicio/Clientes';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
+import { UsuariosModalComponent } from './usuarios-modal/usuarios-modal.component';
+import { Usuario } from 'src/app/servicio/Usuario';
 
 // esteobjeto controla la modal cuando update es true
 // la modal que se abre es de actualizar asi mismo con create
@@ -18,23 +19,20 @@ export interface DialogData {
   lista: any[];
 }
 
- @Component({
-  selector: 'app-clientes',
-  templateUrl: './clientes.component.html',
-  styleUrls: ['./clientes.component.css'],
-  
+@Component({
+  selector: 'app-usuarios',
+  templateUrl: './usuarios.component.html',
+  styleUrls: ['./usuarios.component.css']
 })
-export class ClientesComponent  implements OnInit {
+export class UsuariosComponent implements OnInit {
   // este arreglo es muy importante porque es el head de la tabla
-  displayedColumns: string[] = ['Accion','Nombre','RazonSocial', 'Observacion', 'Nit', 'Direccion','Telefono', 'CorreoElectronico', 'NombreResponsable', 'CorreoResponsable'];
-
-
+  displayedColumns: string[] = ['Accion', 'Nombre',  'Rol', 'CodigoCarnet'];
   // data sourcees el arreglo que se va convertir en el objeto que se usa en la tabla
   dataSource: any; 
   // estosds arreglos son para llenarlos con la lista de clientes que voy a usar en la modal
   // uno para traer la consulta completa y otro auxiliar para llenarlo con la filtrada
-  clientes: Clientes[];
-  auxClientes: Clientes[];
+  usuario: Usuario[];
+  auxUsuario: Usuario[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -59,7 +57,7 @@ export class ClientesComponent  implements OnInit {
 
   //esta funcion abre la modal de crear 
   abrirModalCrear() {
-    const dialogRef = this.dialog.open(ClientesModalComponent, {
+    const dialogRef = this.dialog.open(UsuariosModalComponent, {
       data: {update: false,create:true, lista: [],delete: false},
     });
 
@@ -87,9 +85,9 @@ export class ClientesComponent  implements OnInit {
   //esta funcion abre la modal de actualizar y le envia un arreglo auxiliar
   //que es el resultado de clientes filtrado por el Id elegido
   abrirModalActualizar(id: any){
-    this.auxClientes = this.clientes.filter(x=> x.Id == id);
-    const dialogRef = this.dialog.open(ClientesModalComponent, {
-      data: {update: true, create: false, lista: this.auxClientes, delete: false},
+    this.auxUsuario = this.usuario.filter(x=> x.Id == id);
+    const dialogRef = this.dialog.open(UsuariosModalComponent, {
+      data: {update: true, create: false, lista: this.auxUsuario, delete: false},
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -105,7 +103,7 @@ export class ClientesComponent  implements OnInit {
 
   //esta funcion elimina el registro y recibe el id para usar el servicio de eliminar
   eliminar(id: number){    
-    this.crudservice.eliminarCliente(id).subscribe();
+    this.crudservice.eliminarUsuario(id).subscribe();
     setTimeout(() => {          
       this.ngOnInit();  
       if (this.dataSource.paginator) {
@@ -118,9 +116,9 @@ export class ClientesComponent  implements OnInit {
 //listarClientes para llenar datasourse que es el 
 //arreglo de la tabla y clientes que es el arreglo de la modal actualizar
   obtenerLista(){   
-    this.crudservice.listarCliente().subscribe(res=> { 
-      this.clientes = res;     
-      const ELEMENT_DATA: Clientes[] = res;       
+    this.crudservice.listarUsuarios().subscribe(res=> { 
+      this.usuario = res;     
+      const ELEMENT_DATA: Usuario[] = res;       
       this.dataSource = new MatTableDataSource(ELEMENT_DATA);  
       console.log(this.dataSource)
     });

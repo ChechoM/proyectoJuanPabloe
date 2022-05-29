@@ -1,17 +1,17 @@
 
 
 <div class="row" *ngIf="data.create || data.update">
-    <div class="col-sm-2 d-flex justify-content-start">
-        <h2 *ngIf="crear" mat-dialog-title>Crear usuario</h2>
-        <h2 *ngIf="actualizar"  mat-dialog-title>Actualizar usuario</h2>
+    <div class="col-sm-5 d-flex justify-content-start">
+        <h2 *ngIf="data.create" mat-dialog-title>Crear usuario</h2>
+        <h2 *ngIf="data.update"  mat-dialog-title>Actualizar usuario</h2>
     </div>
-    <div class="col-sm-10 d-flex justify-content-end">  
+    <div class="col-sm-7 d-flex justify-content-end">  
         <button mat-button mat-dialog-close>                    
             <i class="fa-solid fa-xmark" style="font-size: 20px;"></i>
         </button>
     </div>
 </div>
-<form (ngSubmit)="data.create? enviarDatos(): actualizarDatos(data.lista[0].Id)" [formGroup]="formularioClientes" *ngIf="data.create || data.update">
+<form (ngSubmit)="data.create? enviarDatos(): actualizarDatos(data.lista[0].Id)" [formGroup]="formGroup" *ngIf="data.create || data.update">
     <mat-dialog-content class="mat-typography contenedor"> 
         
         <div class="row" *ngIf="data.update">
@@ -27,7 +27,7 @@
             <div class="col-sm-2  d-inline m-3 mb-2 ">
                 <strong >Nombre</strong>
             </div>
-            <div class=" col-sm-9 d-inline m-3 mb-2">            
+            <div class=" col-sm-9 d-inline m-3 mb-2">
                 <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
                     <mat-label >Nombre</mat-label>
                     <input formControlName="Nombre" matInput type="text"  placeholder="Ingrese nombre">
@@ -38,6 +38,50 @@
                 <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
                     <mat-label >Nombre</mat-label>
                     <input formControlName="Nombre" matInput type="text"  placeholder="Ingrese nombre" [ngModel]="data.lista[0].Nombre">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Razon social</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                    <mat-label >Razon social</mat-label>
+                    <input formControlName="RazonSocial" matInput type="text"  placeholder="Ingrese razon social">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                    <mat-label >Razon social</mat-label>
+                    <input formControlName="RazonSocial" matInput type="text"  placeholder="Ingrese razon social" [ngModel]="data.lista[0].RazonSocial">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Observación</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                    <mat-label >Observación</mat-label>
+                    <input formControlName="Observacion" matInput type="text"  placeholder="Ingrese observación">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                    <mat-label >Observación</mat-label>
+                    <input formControlName="Observacion" matInput type="text"  placeholder="Ingrese observación" [ngModel]="data.lista[0].Observacion">
                     <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
@@ -118,14 +162,14 @@
             <div class=" col-sm-9 d-inline m-3 mb-2 ">            
                 <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
                     <mat-label >Correo electrónico</mat-label>
-                    <input formControlName="correoElectronico" matInput type="email"  placeholder="Ingrese correo electrónico">
+                    <input formControlName="CorreoElectronico" matInput type="email"  placeholder="Ingrese correo electrónico">
                     <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </mat-form-field>
                 <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
                     <mat-label >Correo electrónico</mat-label>
-                    <input formControlName="correoElectronico" matInput type="email"  placeholder="Ingrese correo electrónico" [(ngModel)]="data.lista[0].correoElectronico">
+                    <input formControlName="CorreoElectronico" matInput type="email"  placeholder="Ingrese correo electrónico" [(ngModel)]="data.lista[0].CorreoElectronico">
                     <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
@@ -140,14 +184,14 @@
             <div class=" col-sm-9 d-inline m-3 mb-2 ">            
                 <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
                     <mat-label >Nombre responsable</mat-label>
-                    <input formControlName="nombreResponsable" matInput type="text"  placeholder="Ingrese nombre responsable">
+                    <input formControlName="NombreResponsable" matInput type="text"  placeholder="Ingrese nombre responsable">
                     <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </mat-form-field>
                 <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
                     <mat-label >Nombre responsable</mat-label>
-                    <input formControlName="nombreResponsable" matInput type="text"  placeholder="Ingrese nombre responsable" [(ngModel)]="data.lista[0].nombreResponsable">
+                    <input formControlName="NombreResponsable" matInput type="text"  placeholder="Ingrese nombre responsable" [(ngModel)]="data.lista[0].NombreResponsable">
                     <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
@@ -162,14 +206,14 @@
             <div class=" col-sm-9 d-inline m-3 mb-2 ">            
                 <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
                     <mat-label >Correo responsable</mat-label>
-                    <input formControlName="correoResponsable" matInput type="email"  placeholder="Ingrese correo responsable">
+                    <input formControlName="CorreoResponsable" matInput type="email"  placeholder="Ingrese correo responsable">
                     <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </mat-form-field>
                 <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
                     <mat-label >Correo responsable</mat-label>
-                    <input formControlName="correoResponsable" matInput type="email"  placeholder="Ingrese correo responsable" [(ngModel)]="data.lista[0].correoResponsable">
+                    <input formControlName="CorreoResponsable" matInput type="email"  placeholder="Ingrese correo responsable" [(ngModel)]="data.lista[0].CorreoResponsable">
                     <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
                         <i class="fa-solid fa-xmark"></i>
                     </button>

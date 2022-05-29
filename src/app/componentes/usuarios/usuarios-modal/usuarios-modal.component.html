@@ -1,0 +1,119 @@
+
+
+<div class="row" *ngIf="data.create || data.update">
+    <div class="col-sm-5 d-flex justify-content-start">
+        <h2 *ngIf="data.create" mat-dialog-title>Crear usuario</h2>
+        <h2 *ngIf="data.update"  mat-dialog-title>Actualizar usuario</h2>
+    </div>
+    <div class="col-sm-7 d-flex justify-content-end">  
+        <button mat-button mat-dialog-close>                    
+            <i class="fa-solid fa-xmark" style="font-size: 20px;"></i>
+        </button>
+    </div>
+</div>
+<form (ngSubmit)="data.create? enviarDatos(): actualizarDatos(data.lista[0].Id)" [formGroup]="formGroup" *ngIf="data.create || data.update">
+    <mat-dialog-content class="mat-typography contenedor"> 
+        
+        <div class="row" *ngIf="data.update">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Id</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">            
+                <strong>{{data.lista[0].Id}}</strong>
+            </div>
+        </div> 
+
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Nombre</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                    <mat-label >Nombre</mat-label>
+                    <input formControlName="Nombre" matInput type="text"  placeholder="Ingrese nombre">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                    <mat-label >Nombre</mat-label>
+                    <input formControlName="Nombre" matInput type="text"  placeholder="Ingrese nombre" [ngModel]="data.lista[0].Nombre">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Contraseña</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                    <mat-label >Contraseña</mat-label>
+                    <input formControlName="Contrasena" matInput type="text"  placeholder="Ingrese contraseña">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                    <mat-label >Contraseña</mat-label>
+                    <input formControlName="Contrasena" matInput type="text"  placeholder="Ingrese contraseña" [ngModel]="data.lista[0].Contrasena">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Rol</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                    <mat-label >Rol</mat-label>
+                    <input formControlName="Rol" matInput type="text"  placeholder="Ingrese Rol">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                    <mat-label >Rol</mat-label>
+                    <input formControlName="Rol" matInput type="text"  placeholder="Ingrese Rol" [ngModel]="data.lista[0].Rol">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Código carnet</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                    <mat-label >Código carnet</mat-label>
+                    <input formControlName="CodigoCarnet" matInput type="text"  placeholder="Ingrese Código carnet">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                    <mat-label >Código carnet</mat-label>
+                    <input formControlName="CodigoCarnet" matInput type="text"  placeholder="Ingrese Código carnet" [ngModel]="data.lista[0].CodigoCarnet">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancelar</button>
+        <button type="submit" mat-button [mat-dialog-close]="true" cdkFocusInitial>Guardar</button>        
+    </mat-dialog-actions>
+</form>

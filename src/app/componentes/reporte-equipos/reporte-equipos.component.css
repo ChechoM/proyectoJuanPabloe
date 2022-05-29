@@ -1,0 +1,44 @@
+.chart-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-container .legend {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto;
+}
+
+.chart-container .legend-item {
+    display: flex;
+}
+
+.chart-container span {
+    margin-right: 0.3rem;
+}
+
+.chart-container .chart-container .legend-rect {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.3rem;
+}
+
+.chart-container .hidden,
+.show {
+    width: auto;
+    cursor: pointer;
+}
+
+.chart-container .hidden {
+    text-decoration: line-through;
+}
+
+.chart {
+    height: 20rem;
+    width: 40rem;
+}

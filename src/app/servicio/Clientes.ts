@@ -1,10 +1,12 @@
 export class Clientes{  
-    Id!: number
-    Nombre!: string
-    Nit!: string
-    Direccion!: string
-    Telefono!: string
-    correoElectronico!: string
-    nombreResponsable!: string
-    correoResponsable!: string
+    Id?: number
+    Nombre?: number
+    RazonSocial?: string
+    Observacion?: string
+    Nit?: string
+    Direccion?: string
+    Telefono?: string
+    CorreoElectronico?: string
+    NombreResponsable?: string
+    CorreoResponsable?:string
 }

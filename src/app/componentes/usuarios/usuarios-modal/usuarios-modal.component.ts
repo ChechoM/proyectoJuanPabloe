@@ -2,15 +2,14 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CrudService } from 'src/app/servicio/crud.service';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { DialogData } from '../clientes.component';
-
+import { DialogData } from '../usuarios.component';
 
 @Component({
-  selector: 'app-clientes-modal',
-  templateUrl: './clientes-modal.component.html',
-  styleUrls: ['./clientes-modal.component.css']
+  selector: 'app-usuarios-modal',
+  templateUrl: './usuarios-modal.component.html',
+  styleUrls: ['./usuarios-modal.component.css']
 })
-export class ClientesModalComponent implements OnInit {
+export class UsuariosModalComponent implements OnInit {
 
   formGroup: FormGroup;
 
@@ -21,7 +20,7 @@ export class ClientesModalComponent implements OnInit {
   (
     public formulario:FormBuilder, 
     private curdService:CrudService,
-    public dialogRef: MatDialogRef<ClientesModalComponent>,
+    public dialogRef: MatDialogRef<UsuariosModalComponent>,
     @Inject(MAT_DIALOG_DATA) 
     public data: DialogData,
   ) { 
@@ -29,14 +28,9 @@ export class ClientesModalComponent implements OnInit {
     this.formGroup = this.formulario.group ({
       Id: [''],
       Nombre: [''],
-      RazonSocial: [''],
-      Observacion: [''],
-      Nit: [''],
-      Direccion: [''],
-      Telefono: [''],
-      CorreoElectronico: [''],
-      NombreResponsable: [''],
-      CorreoResponsable: ['']
+      Contrasena: [''],
+      Rol: [''],
+      CodigoCarnet: ['']
     });
   }
 
@@ -45,12 +39,12 @@ export class ClientesModalComponent implements OnInit {
 
     //esta funcion llama a el servicio para crear este servicio esta alojado en crud service
   enviarDatos():any{    
-    this.curdService.crearCliente(this.formGroup.value).subscribe();    
+    this.curdService.crearUsuarios(this.formGroup.value).subscribe();    
   }
   //esta funcion llama a el servicio para actualizar este servicio esta alojado en crud service
   actualizarDatos(id:any):any{
     this.formGroup.value.Id = id;
-    this.curdService.actualizarCliente(this.formGroup.value).subscribe();
+    this.curdService.actualizarUsuario(this.formGroup.value).subscribe();
   }
 
 }

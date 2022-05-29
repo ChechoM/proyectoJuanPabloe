@@ -22,10 +22,15 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
+
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EquiposComponent } from './componentes/equipos/equipos.component';
+import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
+import { UsuariosModalComponent } from './componentes/usuarios/usuarios-modal/usuarios-modal.component';
+import { ReporteEquiposComponent } from './componentes/reporte-equipos/reporte-equipos.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -36,9 +41,13 @@ import { EquiposComponent } from './componentes/equipos/equipos.component';
     NavComponent,
     FooterComponent,
     InicioComponent,
-    EquiposComponent
+    EquiposComponent,
+    UsuariosComponent,
+    UsuariosModalComponent,
+    ReporteEquiposComponent
   ],
   imports: [
+    ChartsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

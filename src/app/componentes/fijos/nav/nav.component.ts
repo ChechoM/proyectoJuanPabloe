@@ -13,6 +13,10 @@ export class NavComponent implements OnInit {
   }
   enrutar(i:any){
     switch (i){
+      case 1:{        
+        this.router.navigate(['usuario']);
+      break;
+      }
       case 2:{
         this.router.navigate(['clientes']);
         break;
@@ -22,7 +26,7 @@ export class NavComponent implements OnInit {
         break;
       }
       case 5:{
-        this.router.navigate(['footer'])
+        this.router.navigate(['reportes'])
         break;
       }
     }

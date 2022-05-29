@@ -22,9 +22,14 @@ progreso:boolean[] = [false,false,false,false,false,false];
 
   enrutar(i:any){
     switch (i){
-      case 1:{
-        this.router.navigate(['clientes'])
-      } 
+      case 1:
+        this.router.navigate(['clientes']);
+      break;
+      case 0:
+        this.router.navigate(['usuario']); 
+      break;
+      case 4:
+        this.router.navigate(['reportes']);      
      }
   }
 }
