@@ -3,7 +3,7 @@
     <h1 class="titulo-inicio">Gestiona todas las herramientas necesarias para el registro de datos</h1>
     <div class="row-sm-8">
         <div class="col-sm-4 d-inline">                  
-            <mat-card class="example-card bg-dark colorHover" >
+            <mat-card class="example-card bg-dark colorHover">
                 <mat-card-title class="text-center">Usuarios</mat-card-title>
                 <mat-card-content>
                   <p>En esta opcion podra crear ususarios</p>
@@ -11,7 +11,7 @@
                 </mat-card-content>
                 <mat-divider inset></mat-divider>
                 <mat-card-actions class="text-center">
-                  <button (click)="activarProgres(0)" mat-stroked-button color="accent" class="col-12">Ir al sitio</button>
+                  <button [disabled] = "permiso" (click)="activarProgres(0)" mat-stroked-button color="accent" class="col-12">Ir al sitio</button>
                 </mat-card-actions>
                 <mat-card-footer>
                   <mat-progress-bar [ngStyle]="{'visibility': progreso[0]? 'visible  ' : 'hidden'}"  mode="indeterminate" color="accent"></mat-progress-bar>
@@ -85,21 +85,21 @@
             </mat-card>
         </div> 
         <div class="col-sm-4 d-inline">
-            <mat-card class="example-card bg-dark colorHover" style="visibility: hidden;">
-                <mat-card-title class="text-center">Usuarios</mat-card-title>
-                <mat-card-content>
-                  <p>En esta opcion podra crear ususarios</p>
-                  <p></p>
-                </mat-card-content>
-                <mat-divider inset></mat-divider>
-                <mat-card-actions class="text-center">
-                  <button (click)="activarProgres(5)" mat-stroked-button color="accent" class="col-12">Ir al sitio</button>
-                </mat-card-actions>
-                <mat-card-footer>
-                  <mat-progress-bar [ngStyle]="{'visibility': progreso[5]? 'visible  ' : 'hidden'}"  mode="indeterminate" color="accent"></mat-progress-bar>
-                </mat-card-footer>
-            </mat-card>
-        </div>    
+          <mat-card class="example-card bg-dark colorHover" >
+              <mat-card-title class="text-center">Citas</mat-card-title>
+              <mat-card-content>
+                <p>En esta opcion podra crear ususarios</p>
+                <i class="fa-solid fa-clipboard-question"></i>
+              </mat-card-content>
+              <mat-divider inset></mat-divider>
+              <mat-card-actions class="text-center">
+                <button (click)="activarProgres(5)" mat-stroked-button color="accent" class="col-12">Ir al sitio</button>
+              </mat-card-actions>
+              <mat-card-footer>
+                <mat-progress-bar [ngStyle]="{'visibility': progreso[5]? 'visible  ' : 'hidden'}"  mode="indeterminate" color="accent"></mat-progress-bar>
+              </mat-card-footer>
+          </mat-card>
+      </div>                 
     </div>
 </div>
 

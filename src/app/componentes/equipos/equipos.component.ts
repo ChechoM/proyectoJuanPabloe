@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CrudService } from 'src/app/servicio/crud.service';
 
 @Component({
   selector: 'app-equipos',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EquiposComponent implements OnInit {
 
-  constructor() { }
+  constructor(private crudservice: CrudService) { }
 
   ngOnInit(): void {
+    
   }
 
 }

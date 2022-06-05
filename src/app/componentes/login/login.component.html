@@ -1,0 +1,31 @@
+<div class=" row bg-dark align-self-center contenedor position-absolute top-50 start-50 translate-middle pt-5">
+    <form (ngSubmit)="login()" [formGroup]="formGroup">
+        <div class="row iconUser m-3">
+            <i class="fa-solid fa-user"></i>
+        </div>
+        <div class=" row m-2">
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>Usuario</mat-label>
+                <input formControlName="Nombre" matInput type="text" placeholder="Ingrese usuario" required>
+            </mat-form-field>
+        </div>
+        <div class=" row m-2">
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>Contraseña</mat-label>
+                <input formControlName="Contrasena" matInput type="password" placeholder="Ingrese contraseña" required>
+            </mat-form-field>
+        </div>
+        <div class=" row m-2">
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>Codigo Carnet</mat-label>
+                <input formControlName="CodigoCarnet" matInput type="text" placeholder="Ingrese solo en caso de registrar">
+            </mat-form-field>
+        </div>
+        <div class=" row m-2">
+            <button type="submit" mat-button cdkFocusInitial class="buttonSubmit" [disabled]="!formGroup.valid">Login</button>
+        </div>
+        <div class=" row m-2">
+            <button type="button" mat-button cdkFocusInitial class="buttonSubmit bg-info" (click) ="registrar()">Registrar</button>
+        </div>
+    </form>
+</div>

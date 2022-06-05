@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CrudService } from 'src/app/servicio/crud.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  constructor(private router: Router) { }
+  constructor(private router: Router,private crudservice: CrudService) { }
 
   ngOnInit(): void {
   }
@@ -21,12 +22,16 @@ export class NavComponent implements OnInit {
         this.router.navigate(['clientes']);
         break;
       }
+      case 5:{
+        this.router.navigate(['reportes'])
+        break;
+      }      
       case 6:{
         this.router.navigate(['inicio'])
         break;
       }
-      case 5:{
-        this.router.navigate(['reportes'])
+      case 7:{
+        this.crudservice.logout()
         break;
       }
     }

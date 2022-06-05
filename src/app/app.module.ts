@@ -31,6 +31,7 @@ import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 import { UsuariosModalComponent } from './componentes/usuarios/usuarios-modal/usuarios-modal.component';
 import { ReporteEquiposComponent } from './componentes/reporte-equipos/reporte-equipos.component';
 import { ChartsModule } from 'ng2-charts';
+import { LoginComponent } from './componentes/login/login.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ChartsModule } from 'ng2-charts';
     EquiposComponent,
     UsuariosComponent,
     UsuariosModalComponent,
-    ReporteEquiposComponent
+    ReporteEquiposComponent,
+    LoginComponent
   ],
   imports: [
     ChartsModule,

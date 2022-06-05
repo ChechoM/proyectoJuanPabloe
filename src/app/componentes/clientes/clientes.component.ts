@@ -49,6 +49,7 @@ export class ClientesComponent  implements OnInit {
 // iniciar la pagina por lo cual es donde se pone a iniciar las funciones principales
 // (obtener lista y el paginador para que la tabla se llene)
   ngOnInit(): void{ 
+    
     this.obtenerLista() 
     setTimeout(() => {          
       this.dataSource.paginator = this.paginator;

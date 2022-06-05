@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
+import { CrudService } from 'src/app/servicio/crud.service';
 
 @Component({
   selector: 'app-inicio',
@@ -7,10 +8,21 @@ import {  Router } from '@angular/router';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
+  permiso:boolean = false;
 progreso:boolean[] = [false,false,false,false,false,false];
-  constructor(private router: Router) { }
+  constructor(private router: Router,private crudservice: CrudService) { }
 
   ngOnInit(): void {
+    setTimeout(() => {      
+    this.validarpermisos();
+     }, 500);
+  }
+
+  validarpermisos(){
+    let rol = localStorage.getItem('Rol')?.toString();
+    if(rol != "admin"){
+        this.permiso = true;
+    }
   }
 
   activarProgres(i:any){
@@ -21,6 +33,7 @@ progreso:boolean[] = [false,false,false,false,false,false];
   }
 
   enrutar(i:any){
+    this.validarpermisos();
     switch (i){
       case 1:
         this.router.navigate(['clientes']);

@@ -35,10 +35,12 @@ export class UsuariosModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
+    console.log(localStorage)
   }
 
     //esta funcion llama a el servicio para crear este servicio esta alojado en crud service
-  enviarDatos():any{    
+  enviarDatos():any{ 
     this.curdService.crearUsuarios(this.formGroup.value).subscribe();    
   }
   //esta funcion llama a el servicio para actualizar este servicio esta alojado en crud service

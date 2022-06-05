@@ -1,0 +1,10 @@
+.fondo{
+    background-image: url("src/assets/images/oficceBlack.jpg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+.aclarar{
+    background-color: rgb(255, 255, 255,0.4);
+    height: 100%;
+}

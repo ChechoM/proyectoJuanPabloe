@@ -1,6 +1,10 @@
-<header>
-    <app-nav></app-nav>
-</header>
-<main>
-    <router-outlet></router-outlet>
-</main>
+<div [ngClass]="{fondo: !hiddenNav}">
+    <div [ngClass]="{aclarar: !hiddenNav}">
+        <header>
+            <app-nav *ngIf="hiddenNav"></app-nav>
+        </header>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+</div>

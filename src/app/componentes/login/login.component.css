@@ -1,0 +1,30 @@
+
+.mat-form-field{
+    min-width: 100%;
+
+}  
+
+.contenedor{
+    width: 25%;
+    height: auto;
+    text-align: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+}
+
+.iconUser{
+    font-size: 7rem;
+    padding: 1rem;
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.buttonSubmit{
+    background-color: #69f0ae;
+}
+.mat-form-field.mat-accent .mat-input-element {
+    color: white;
+}

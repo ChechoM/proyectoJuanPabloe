@@ -1,14 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BaseChartDirective, Label } from 'ng2-charts';
 import { Chart, ChartDataSets, ChartOptions } from 'chart.js';
 import { drawRoundedEdges } from '../fijos/chart/chartjs-round-bars'
+import { CrudService } from 'src/app/servicio/crud.service';
 
 @Component({
   selector: 'app-reporte-equipos',
   templateUrl: './reporte-equipos.component.html',
   styleUrls: ['./reporte-equipos.component.css']
 })
-export class ReporteEquiposComponent {
+export class ReporteEquiposComponent implements OnInit{
 
   @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
   public chartLabels: Label[] = ['Equipo 1', 'Equipo 2', 'Equipo 3', 'Equipo 4'];
@@ -41,8 +42,12 @@ export class ReporteEquiposComponent {
       }
   };
 
-  constructor() {
+  constructor(private crudservice: CrudService) {
     Chart.defaults.global.defaultFontFamily = "'Helvetica Neue', sans-serif";
     Chart.elements.Rectangle.prototype.draw = drawRoundedEdges;
+  }
+
+  ngOnInit(): void {    
+    
   }
 }
