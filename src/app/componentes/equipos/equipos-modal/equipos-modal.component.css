@@ -1,0 +1,33 @@
+
+  .mat-form-field{
+    min-width: 700px;
+
+} 
+.contenedor::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.contenedor::-webkit-scrollbar:vertical {
+  width:7px;
+}
+
+.contenedor::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+  display: none;
+} 
+
+.contenedor::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.contenedor::-webkit-scrollbar-thumb {
+  background-color: #69f0ae;
+  border-radius: 20px;
+}
+
+.contenedor.mat-dialog-content{
+    padding-right: 60px !important;
+}
+
+.contenedor::-webkit-scrollbar-track {
+  border-radius: 10px;  
+}

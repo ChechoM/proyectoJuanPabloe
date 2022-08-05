@@ -6,6 +6,8 @@ import { Usuario } from './Usuario';
 import { User, UserResponse } from './Login';
 import { NavigationEnd, Router } from '@angular/router';
 import Swal from 'sweetalert2'
+import { Equipo } from './Equipo';
+import { Certificado } from './Certificado';
 
 
 @Injectable({
@@ -43,6 +45,35 @@ export class CrudService {
   }
   eliminarUsuario(id: number): Observable<any> {
     return this.clienthttp.get(this.API + "?borrarUsuario=" + id);
+  }
+  
+   // Equipo
+   listarEquipos(): Observable<any> {
+    return this.clienthttp.get(this.API + "?listarEquipos");
+  }
+  crearEquipos(datosEquipo: Equipo): Observable<any> {
+    return this.clienthttp.post(this.API + "?insertarEquipos", datosEquipo);
+  }
+  actualizarEquipo(datosEquipo: Equipo): Observable<any> {
+    return this.clienthttp.post(this.API + "?actualizarEquipos", datosEquipo);
+  }
+  eliminarEquipo(id: number): Observable<any> {
+    return this.clienthttp.get(this.API + "?borrarEquipo=" + id);
+  }
+
+
+   // Certificado
+   listarCertificado(): Observable<any> {
+    return this.clienthttp.get(this.API + "?listarCertificados");
+  }
+  crearCertificado(datosCertificado: Certificado): Observable<any> {
+    return this.clienthttp.post(this.API + "?insertarCertificado", datosCertificado);
+  }
+  actualizarCertificado(datosCertificado: Certificado): Observable<any> {
+    return this.clienthttp.post(this.API + "?actualizarCertificado", datosCertificado);
+  }
+  eliminarCertificado(id: number): Observable<any> {
+    return this.clienthttp.get(this.API + "?borrarCertificado=" + id);
   }
 
   //login

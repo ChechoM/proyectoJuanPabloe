@@ -1,0 +1,100 @@
+<!-- Id: [''],
+      IdDispositivo: [''],
+      UsuarioCreacion: [''],
+      fechaCreacion: [''],
+      FechaCertificacion: [''],
+      nombreEquipo: [''],
+      estado: [''], -->
+
+
+      
+<div class="container" style="width: 900px;">
+    <div class="row" *ngIf="data.create || data.update">
+        <div class="col-sm-5 d-flex justify-content-start">
+            <h2 *ngIf="data.create" mat-dialog-title>Crear usuario</h2>
+            <h2 *ngIf="data.update"  mat-dialog-title>Actualizar usuario</h2>
+        </div>
+        <div class="col-sm-7 d-flex justify-content-end">  
+            <button mat-button mat-dialog-close>                    
+                <i class="fa-solid fa-xmark" style="font-size: 20px;"></i>
+            </button>
+        </div>
+    </div>
+    <form (ngSubmit)="data.create? enviarDatos(): actualizarDatos(data.lista[0].Id)" [formGroup]="formGroup" *ngIf="data.create || data.update">
+        <mat-dialog-content class="mat-typography contenedor"> 
+            
+            <div class="row" *ngIf="data.update">
+                <div class="col-sm-2  d-inline m-3 mb-2 ">
+                    <strong >Id</strong>
+                </div>
+                <div class=" col-sm-9 d-inline m-3 mb-2">            
+                    <strong>{{data.lista[0].Id}}</strong>
+                </div>
+            </div>     
+    
+            <div class="row">
+                <div class="col-sm-2  d-inline m-3 mb-2 ">
+                    <strong >Equipo</strong>
+                </div>
+                <div class=" col-sm-9 d-inline m-3 mb-2">
+                    <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                        <mat-label >Equipo</mat-label>
+                        <mat-select formControlName="IdDispositivo">
+                            <mat-option *ngFor="let equipos of lstEquipos" [value]="equipos.Id">
+                              {{equipos.Nombre}}
+                            </mat-option>
+                          </mat-select>             
+                    </mat-form-field>
+                    <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                        <mat-label >Equipo</mat-label>
+                        <mat-select formControlName="IdDispositivo" [ngModel]="data.lista[0].IdDispositivo">
+                            <mat-option *ngFor="let equipos of lstEquipos" [value]="equipos.Id">
+                              {{equipos.Nombre}}
+                            </mat-option>
+                          </mat-select>             
+                    </mat-form-field>
+                </div>
+            </div>        
+    
+            <div class="row">
+                <div class="col-sm-2  d-inline m-3 mb-2 ">
+                    <strong >Fecha certificación</strong>
+                </div>
+                <div class=" col-sm-9 d-inline m-3 mb-2">
+                    <mat-form-field  appearance="fill" color="accent" *ngIf="data.create">
+                        <mat-label >Fecha certificación</mat-label>
+                        <input formControlName="FechaCertificacion" matInput [matDatepicker]="picker">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>                    
+                    <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                        <mat-label >Fecha certificación</mat-label>
+                        <input formControlName="FechaCertificacion" [ngModel]="data.lista[0].FechaCertificacion" matInput [matDatepicker]="picker">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-sm-2  d-inline m-3 mb-2 ">
+                    <strong >Estado</strong>
+                </div>
+                <div class=" col-sm-9 d-inline m-3 mb-2">
+                        <mat-slide-toggle *ngIf="data.create"formControlName="estado"></mat-slide-toggle>
+                        <mat-slide-toggle  *ngIf="data.update" formControlName="estado" [ngModel]="cheked(data.lista[0].Estado)"></mat-slide-toggle>
+                </div>
+            </div>         
+    
+            </mat-dialog-content>
+            <mat-dialog-actions align="end">
+            <button mat-button mat-dialog-close>Cancelar</button>
+            <button type="submit" mat-button [mat-dialog-close]="true" cdkFocusInitial>Guardar</button>        
+        </mat-dialog-actions>
+    </form>
+
+
+</div>
+

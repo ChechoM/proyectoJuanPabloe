@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CertificadosComponent } from './componentes/certificados/certificados.component';
 import { ClientesComponent } from './componentes/clientes/clientes.component';
 import { EquiposComponent } from './componentes/equipos/equipos.component';
 import { FooterComponent } from './componentes/fijos/footer/footer.component';
@@ -17,7 +18,8 @@ const routes: Routes =
  {path:'equipo', component:EquiposComponent},
  {path:'usuario', component:UsuariosComponent},
  {path:'login', component:LoginComponent},
- {path:'reportes', component:ReporteEquiposComponent}
+ {path:'reportes', component:ReporteEquiposComponent},
+ {path:'certificados', component:CertificadosComponent}
 
 ];
 

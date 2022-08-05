@@ -6,39 +6,27 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { Equipo } from 'src/app/servicio/Equipo';
-import { EquiposModalComponent } from './equipos-modal/equipos-modal.component';
 import { Clientes } from 'src/app/servicio/Clientes';
 import { Usuario } from 'src/app/servicio/Usuario';
-
-// esteobjeto controla la modal cuando update es true
-// la modal que se abre es de actualizar asi mismo con create
-// el arreglo lista se llena con la lista filtrada de 
-// clientes con el id que se va actualizar
-export interface DialogData {
-  update: boolean;
-  create: boolean;
-  lista: any[];
-}
+import { CertificadosModalComponent } from './certificados-modal/certificados-modal.component';
+import { Certificado } from 'src/app/servicio/Certificado';
 
 @Component({
-  selector: 'app-equipos',
-  templateUrl: './equipos.component.html',
-  styleUrls: ['./equipos.component.css']
+  selector: 'app-certificados',
+  templateUrl: './certificados.component.html',
+  styleUrls: ['./certificados.component.css']
 })
-export class EquiposComponent implements OnInit {
+export class CertificadosComponent implements OnInit {
 
-
+  
   // este arreglo es muy importante porque es el head de la tabla
-  displayedColumns: string[] = ['Accion','CodigoOIdInterno', 'IdUsuario', 
-                                'IdCliente', 'Nombre', 'Modelo', 
-                                'Fabricante', 'CapacidadRango', 
-                                'VariableAMedir', 'Descripcion', 
-                                'Serie',];
+  displayedColumns: string[] = ['Accion','nombreEquipo','FechaCertificacion', 'UsuarioCreacion', 
+                                'fechaCreacion', 'estado',];
   // data sourcees el arreglo que se va convertir en el objeto que se usa en la tabla
   dataSource: any;
   // estosds arreglos son para llenarlos con la lista de clientes que voy a usar en la modal
   // uno para traer la consulta completa y otro auxiliar para llenarlo con la filtrada
-  Equipo: Equipo[];
+  Certificado: Certificado[];
   lstClientes: Clientes[];
   lstUsuarios: Usuario[];
   auxEquipo: Equipo[];
@@ -74,7 +62,7 @@ export class EquiposComponent implements OnInit {
 
   //esta funcion abre la modal de crear 
   abrirModalCrear() {
-    const dialogRef = this.dialog.open(EquiposModalComponent, {
+    const dialogRef = this.dialog.open(CertificadosModalComponent, {
       data: { update: false, create: true, lista: [], delete: false },
     });
 
@@ -102,8 +90,8 @@ export class EquiposComponent implements OnInit {
   //esta funcion abre la modal de actualizar y le envia un arreglo auxiliar
   //que es el resultado de clientes filtrado por el Id elegido
   abrirModalActualizar(id: any) {
-    this.auxEquipo = this.Equipo.filter(x => x.Id == id);
-    const dialogRef = this.dialog.open(EquiposModalComponent, {
+    this.auxEquipo = this.Certificado.filter(x => x.Id == id);
+    const dialogRef = this.dialog.open(CertificadosModalComponent, {
       data: { update: true, create: false, lista: this.auxEquipo, delete: false },
     });
 
@@ -120,7 +108,7 @@ export class EquiposComponent implements OnInit {
 
   //esta funcion elimina el registro y recibe el id para usar el servicio de eliminar
   eliminar(id: number) {
-    this.crudservice.eliminarEquipo(id).subscribe();
+    this.crudservice.eliminarCertificado(id).subscribe();
     setTimeout(() => {
       this.ngOnInit();
       if (this.dataSource.paginator) {
@@ -133,16 +121,13 @@ export class EquiposComponent implements OnInit {
   //listarClientes para llenar datasourse que es el 
   //arreglo de la tabla y clientes que es el arreglo de la modal actualizar
   obtenerLista() {
-    this.crudservice.listarEquipos().subscribe(res => {
-      this.Equipo = res;
-      this.Equipo.forEach(element => {
-        element.Nombre_Cliente = this.lstClientes.filter(x=> x.Id == element.IdCliente).map(x=> x.Nombre).toString();
-        element.Nombre_Usuario = this.lstUsuarios.filter(x=> x.Id == element.IdUsuario).map(x=> x.Nombre).toString();
-      });
-      const ELEMENT_DATA: Equipo[] = this.Equipo;
+    this.crudservice.listarCertificado().subscribe(res => {
+      this.Certificado = res;
+      const ELEMENT_DATA: Equipo[] = this.Certificado;
       this.dataSource = new MatTableDataSource(ELEMENT_DATA);
       console.log(this.dataSource)
     });
   }
 
 }
+

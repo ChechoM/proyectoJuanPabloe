@@ -74,10 +74,11 @@
             <div class=" col-sm-9 d-inline m-3 mb-2">
                 <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
                     <mat-label >Rol</mat-label>
-                    <input formControlName="Rol" matInput type="text"  placeholder="Ingrese Rol">
-                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
+                    <mat-select>
+                        <mat-option formControlName="Rol"  *ngFor="let rol of Roles" [value]="rol.Value">
+                          {{rol.Nombre}}
+                        </mat-option>
+                      </mat-select>
                 </mat-form-field>
                 <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
                     <mat-label >Rol</mat-label>

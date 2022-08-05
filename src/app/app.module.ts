@@ -20,8 +20,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-
-
+import  {  NgSelectModule  }  from  '@ng-select/ng-select' ; 
+import {MatSelectModule} from '@angular/material/select';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,6 +33,10 @@ import { UsuariosModalComponent } from './componentes/usuarios/usuarios-modal/us
 import { ReporteEquiposComponent } from './componentes/reporte-equipos/reporte-equipos.component';
 import { ChartsModule } from 'ng2-charts';
 import { LoginComponent } from './componentes/login/login.component';
+import { EquiposModalComponent } from './componentes/equipos/equipos-modal/equipos-modal.component';
+import { CertificadosComponent } from './componentes/certificados/certificados.component';
+import { CertificadosModalComponent } from './componentes/certificados/certificados-modal/certificados-modal.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -46,7 +51,10 @@ import { LoginComponent } from './componentes/login/login.component';
     UsuariosComponent,
     UsuariosModalComponent,
     ReporteEquiposComponent,
-    LoginComponent
+    LoginComponent,
+    EquiposModalComponent,
+    CertificadosComponent,
+    CertificadosModalComponent
   ],
   imports: [
     ChartsModule,
@@ -67,6 +75,11 @@ import { LoginComponent } from './componentes/login/login.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatDialogModule,
+    MatDatepickerModule,
+    NgSelectModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatNativeDateModule,
     MatDatepickerModule
   ],
   providers: [],

@@ -22,6 +22,14 @@ export class NavComponent implements OnInit {
         this.router.navigate(['clientes']);
         break;
       }
+      case 3:{
+        this.router.navigate(['equipo']);
+        break;
+      }
+      case 4:{
+        this.router.navigate(['certificados']);
+        break;
+      }
       case 5:{
         this.router.navigate(['reportes'])
         break;

@@ -4,12 +4,22 @@ import { CrudService } from 'src/app/servicio/crud.service';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogData } from '../usuarios.component';
 
+interface Roles {
+  Nombre: string;
+  Value: string;
+}
+
 @Component({
   selector: 'app-usuarios-modal',
   templateUrl: './usuarios-modal.component.html',
   styleUrls: ['./usuarios-modal.component.css']
 })
 export class UsuariosModalComponent implements OnInit {
+
+  Roles: Roles[] = [
+    {Nombre: 'Administrador', Value: 'Admin'},
+    {Nombre: 'Usuario', Value: 'User'},
+  ];
 
   formGroup: FormGroup;
 

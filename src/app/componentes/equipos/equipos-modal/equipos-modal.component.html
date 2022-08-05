@@ -1,0 +1,255 @@
+
+
+<div class="row" *ngIf="data.create || data.update">
+    <div class="col-sm-5 d-flex justify-content-start">
+        <h2 *ngIf="data.create" mat-dialog-title>Crear usuario</h2>
+        <h2 *ngIf="data.update"  mat-dialog-title>Actualizar usuario</h2>
+    </div>
+    <div class="col-sm-7 d-flex justify-content-end">  
+        <button mat-button mat-dialog-close>                    
+            <i class="fa-solid fa-xmark" style="font-size: 20px;"></i>
+        </button>
+    </div>
+</div>
+<form (ngSubmit)="data.create? enviarDatos(): actualizarDatos(data.lista[0].Id)" [formGroup]="formGroup" *ngIf="data.create || data.update">
+    <mat-dialog-content class="mat-typography contenedor"> 
+        
+        <div class="row" *ngIf="data.update">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Id</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">            
+                <strong>{{data.lista[0].Id}}</strong>
+            </div>
+        </div> 
+
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Codigo interno</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                    <mat-label >Codigo interno</mat-label>
+                    <input formControlName="CodigoOIdInterno" matInput type="text"  placeholder="Ingrese codigo interno">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                    <mat-label >Codigo interno</mat-label>
+                    <input formControlName="CodigoOIdInterno" matInput type="text"  placeholder="Ingrese codigo interno" [ngModel]="data.lista[0].CodigoOIdInterno">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Nombre</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                    <mat-label >Nombre</mat-label>
+                    <input formControlName="Nombre" matInput type="text"  placeholder="Ingrese nombre">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                    <mat-label >Nombre</mat-label>
+                    <input formControlName="Nombre" matInput type="text"  placeholder="Ingrese nombre" [ngModel]="data.lista[0].Nombre">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Usuario</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                    <mat-label >Usuario</mat-label>
+                    <mat-select formControlName="IdUsuario" >
+                        <mat-option *ngFor="let usuarios of lstUsuarios" [value]="usuarios.Id">
+                          {{usuarios.Nombre}}
+                        </mat-option>
+                      </mat-select>             
+                </mat-form-field>
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                    <mat-label >Usuario</mat-label>
+                    <mat-select  formControlName="IdUsuario" [ngModel]="data.lista[0].IdUsuario">
+                        <mat-option *ngFor="let usuarios of lstUsuarios" [value]="usuarios.Id">
+                          {{usuarios.Nombre}}
+                        </mat-option>
+                      </mat-select>             
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Cliente</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                    <mat-label >Cliente</mat-label>
+                    <mat-select formControlName="IdCliente">
+                        <mat-option *ngFor="let clientes of lstClientes" [value]="clientes.Id">
+                          {{clientes.Nombre}}
+                        </mat-option>
+                      </mat-select>             
+                </mat-form-field>
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                    <mat-label >Cliente</mat-label>
+                    <mat-select formControlName="IdCliente" [ngModel]="data.lista[0].IdCliente">
+                        <mat-option *ngFor="let clientes of lstClientes" [value]="clientes.Id">
+                          {{clientes.Nombre}}
+                        </mat-option>
+                      </mat-select>             
+                </mat-form-field>
+            </div>
+        </div>        
+
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Modelo</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                    <mat-label >Modelo</mat-label>
+                    <input formControlName="Modelo" matInput type="text"  placeholder="Ingrese modelo">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                    <mat-label >Modelo</mat-label>
+                    <input formControlName="Modelo" matInput type="text"  placeholder="Ingrese modelo" [ngModel]="data.lista[0].Modelo">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Fabricante</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                    <mat-label >Frabricante</mat-label>
+                    <input formControlName="Fabricante" matInput type="text"  placeholder="Ingrese fabricante">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                    <mat-label >Fabricante</mat-label>
+                    <input formControlName="Fabricante" matInput type="text"  placeholder="Ingrese fabricante" [ngModel]="data.lista[0].Fabricante">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Capacidad rango</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                    <mat-label >Capacidad rango</mat-label>
+                    <input formControlName="CapacidadRango" matInput type="text"  placeholder="Ingrese capacidad rango">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                    <mat-label >Capacidad rango</mat-label>
+                    <input formControlName="CapacidadRango" matInput type="text"  placeholder="Ingrese capacidad rango" [ngModel]="data.lista[0].CapacidadRango">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Variable a medir</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                    <mat-label >Variable a medir</mat-label>
+                    <input formControlName="VariableAMedir" matInput type="text"  placeholder="Ingrese variable a medir">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                    <mat-label >Variable a medir</mat-label>
+                    <input formControlName="VariableAMedir" matInput type="text"  placeholder="Ingrese variable a medir" [ngModel]="data.lista[0].VariableAMedir">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Descripción</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                    <mat-label >Descripción</mat-label>
+                    <input formControlName="Descripcion" matInput type="text"  placeholder="Ingrese Descripción">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                    <mat-label >Descripción</mat-label>
+                    <input formControlName="Descripcion" matInput type="text"  placeholder="Ingrese Descripción" [ngModel]="data.lista[0].Descripcion">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2  d-inline m-3 mb-2 ">
+                <strong >Serie</strong>
+            </div>
+            <div class=" col-sm-9 d-inline m-3 mb-2">
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.create">
+                    <mat-label >Serie</mat-label>
+                    <input formControlName="Serie" matInput type="text"  placeholder="Ingrese serie">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+                <mat-form-field   appearance="fill" color="accent" *ngIf="data.update">
+                    <mat-label >Código carnet</mat-label>
+                    <input formControlName="Serie" matInput type="text"  placeholder="Ingrese serie" [ngModel]="data.lista[0].Serie">
+                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancelar</button>
+        <button type="submit" mat-button [mat-dialog-close]="true" cdkFocusInitial>Guardar</button>        
+    </mat-dialog-actions>
+</form>
